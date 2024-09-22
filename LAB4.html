@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>INST377 - LAB 4</title>
+        <style>
+            body{
+                background-color: #a4d7e1;
+            }
+            .container {
+                display: flex-start;
+                flex-direction: row;
+                align-items: flex-start;
+                padding-top: 10px;
+            }
+
+            .row {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .box {
+                background-color: purple;
+                padding: 20px;
+                border-radius: 20px;
+                color: white;
+                width: 45%;
+                margin: 1;
+                text-align: center;
+                border: 2px solid white;
+            }
+
+            .box form {
+                display: flex;
+                justify-content: center;
+            }
+            
+            button{
+                background-color: white; 
+                color: black;
+                margin: 2;
+                
+            } 
+            input[type="text"] {
+                
+                background-color: white;
+                color: black;
+                margin: 2;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 id="heading">INST377 - LAB 4</h1>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="box">
+                    <form id="alertForm" onsubmit="return flase;">
+                        <label>Name:</label>
+                        <input type="text" id="firstName">
+                        <button onclick="alertMe()">Alert Me!</button>
+                    </form>
+                </div>
+                <div class="box">
+                    <button onclick="changeColor()">Change Color</button>
+                </div>
+            </div>
+
+            
+
+            <div class="row">
+                <div class="box">
+                    <form name="Textcheck" onsubmit="return false;">
+                        <label>Text Tester:</label>
+                        <input type="text" id="textTester">
+                        <button onclick="validateText()">Validate Text</button>
+                    </form>
+                </div>
+
+                <div class="box">
+                    <button onclick="addText()">Add Text</button>
+                </div>
+
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            function alertMe(){
+                const name = document.getElementById('firstName').value;
+                if (name) {
+                    alert("HI " + name + "!");
+                }
+            }
+
+            function changeColor(){
+                if (document.body.style.backgroundColor == 'blue'){
+                    document.body.style.backgroundColor = 'white'
+                }else{
+                    document.body.style.backgroundColor = 'blue'
+                }
+            }
+
+            function validateText() {
+                const inputText = document.getElementById('textTester').value;
+                const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                if (validation.test(inputText)) {
+                    alert("How about... Nah");
+                }
+            }
+            let textadded = false;       
+            function addText() {
+                const heading = document.getElementById('heading');
+                if(!textadded){
+                    heading.innerHTML += " Adding Text";
+                    textadded = true;
+                }
+                
+            }        
+            
+        </script>
+    </body>
+</html>
